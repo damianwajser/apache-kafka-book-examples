@@ -1,16 +1,17 @@
 package consumer;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
 import kafka.consumer.Consumer;
 import kafka.consumer.ConsumerConfig;
 import kafka.consumer.ConsumerIterator;
 import kafka.consumer.KafkaStream;
 import kafka.javaapi.consumer.ConsumerConnector;
 import kafka.message.MessageAndMetadata;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 
 public class SimpleHLConsumer {
 
@@ -39,8 +40,12 @@ public class SimpleHLConsumer {
             ConsumerIterator<byte[], byte[]> it = stream.iterator();
             while (it.hasNext()) {
             		MessageAndMetadata<byte[], byte[]> data = it.next();
-            		System.out.println(data.productIterator().next());
+            		scala.collection.Iterator<Object> it1 = data.productIterator();
+            		while(it.hasNext()){
+            			System.out.println(it.next());
+            		}
                 System.out.println("Message from Single Topic: " + new String(data.message()));
+                
             }
         }
         if (consumer != null) {
