@@ -41,9 +41,10 @@ public class SimpleHLConsumer {
             while (it.hasNext()) {
             		MessageAndMetadata<byte[], byte[]> data = it.next();
             		scala.collection.Iterator<Object> it1 = data.productIterator();
-            		while(it.hasNext()){
-            			System.out.println(it.next());
-            		}
+            		it1.next();
+            		it1.next();
+            		Object esto = it.next();
+            		System.out.println(esto);
                 System.out.println("Message from Single Topic: " + new String(data.message()));
                 
             }
