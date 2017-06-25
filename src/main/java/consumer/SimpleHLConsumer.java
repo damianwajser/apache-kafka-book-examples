@@ -46,8 +46,8 @@ public class SimpleHLConsumer {
     }
 
     public static void main(String[] args) {
-        String topic = args[0];
-        SimpleHLConsumer simpleHLConsumer = new SimpleHLConsumer("localhost:2181", "testgroup", topic);
+        String topic = "test-default";
+        SimpleHLConsumer simpleHLConsumer = new SimpleHLConsumer("localhost:2181", "test-couchbase", topic);
         simpleHLConsumer.testConsumer();
     }
 
